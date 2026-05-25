@@ -1,6 +1,7 @@
-import React ,{useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import TodoList from '../TodoList/TodoList'
 import { v4 } from "uuid"
+import "./Header.css"
 
 
 const Header = () => {
@@ -9,9 +10,6 @@ const Header = () => {
                             const savedTodos = localStorage.getItem("todos");
                             return savedTodos ? JSON.parse(savedTodos) : [];
                             });
-    const [editId,setEditId] = useState(null);
-    const [editText,setEditText] = useState(" ");
-
     // save the data to the local storage
     useEffect(()=>{
         localStorage.setItem("todos",JSON.stringify(todos))
@@ -55,18 +53,34 @@ const Header = () => {
         );
    } 
   return (
-    <div>
-        <h1>Task Manager</h1>
+    <main className="task-shell">
+      <section className="task-panel">
+        <div className="task-hero">
+          <p className="task-kicker">Daily workflow</p>
+          <h1>Task Manager</h1>
+          <p className="task-subtitle">Capture, edit, complete, and clear your tasks with a clean focus-first board.</p>
+        </div>
 
-        <input type='text' placeholder='Enter your task' value={input} onChange={(e)=>setInput(e.target.value)} onKeyDown={(e)=>e.key=="enter"&& saveTodo}/>
-        <button onClick={saveTodo}>Submit</button>
+        <div className="task-composer">
+          <input
+            className="task-input"
+            type='text'
+            placeholder='Enter your task'
+            value={input}
+            onChange={(e)=>setInput(e.target.value)}
+            onKeyDown={(e)=>e.key==="Enter" && saveTodo()}
+          />
+          <button className="task-submit" onClick={saveTodo}>Submit</button>
+        </div>
+{/* todo list components */}
       <TodoList
          todos={todos}
          deleteTodo={deleteTodo}
          updateTodo={updateTodo}
          toggleTodo={toggleTodo}
         />
-    </div>
+      </section>
+    </main>
   )
 }
 

@@ -1,16 +1,82 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean React task manager built with Vite. It lets you add tasks, edit them, mark them as completed, delete them, and keep your list saved in the browser with `localStorage`.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add new tasks with the input field or Enter key
+- Mark tasks as complete or incomplete
+- Edit existing task text
+- Delete tasks
+- Persistent storage using browser `localStorage`
+- Responsive polished UI with separate component CSS files
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- CSS
+- UUID
+- ESLint
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Run lint checks:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```text
+src/
+  App.jsx
+  main.jsx
+  components/
+    Header/
+      Header.jsx
+      Header.css
+    TodoList/
+      TodoList.jsx
+      TodoList.css
+    TodoItem/
+      TodoItem.jsx
+      TodoItem.css
+```
+
+## Component Overview
+
+`Header` manages the main task state, handles adding tasks, updates `localStorage`, and passes todo actions down to the list.
+
+`TodoList` renders the task collection and displays the empty list state.
+
+`TodoItem` renders each task, including complete, edit, save, cancel, and delete controls.
+
+## Notes
+
+Tasks are stored locally in the browser. Clearing browser storage will remove saved tasks.

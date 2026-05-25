@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
 import TodoItem from '../TodoItem/TodoItem'
+import "./TodoList.css"
 const TodoList = ({todos,updateTodo,deleteTodo,toggleTodo}) => {
     
 
   return (
     <>
-    <ul>
+    <ul className="todo-list" aria-label="Tasks">
+        {/* // maping the todo and pass them as prop to todoitem component */}
         {
           todos.map((todo)=>
           <TodoItem
-            key = {todo.key}
+            key = {todo.id}
             todo = {todo}
             updateTodo={updateTodo}
             deleteTodo={deleteTodo}

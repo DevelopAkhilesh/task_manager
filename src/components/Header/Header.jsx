@@ -37,7 +37,7 @@ const Header = () => {
     }
 // update the todo function
     function updateTodo(id,newText){
-        if(text.trim()==="")return;
+        if(newText.trim()==="")return;
 
        setTodos( 
         todos.map(
